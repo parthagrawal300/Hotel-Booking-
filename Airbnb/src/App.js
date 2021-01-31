@@ -1,10 +1,22 @@
-import React from 'react'
-import {View,Text} from "react-native"
+import React from 'react';
+import {View, StatusBar} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native';
+
+import AppNavigator from './navigation/AppNavigator';
+import NavigationService from './navigation/NavigationServicies';
 
 export default function App() {
-    return (
-        <View>
-            <Text>Basic Setup</Text>
-        </View>
-    )
+  return (
+    <SafeAreaProvider>
+      <StatusBar barStyle="light-content" />
+      <NavigationContainer
+      // ref={(navigatorRef) => {
+      //   NavigationService.setTopLevelNavigator(navigatorRef);
+      // }}
+      >
+        <AppNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
 }
