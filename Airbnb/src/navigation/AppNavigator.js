@@ -10,6 +10,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {ProfileTabLandingScreen} from '../screens/profile/index';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -170,7 +171,7 @@ const GalleryTab = () => {
     <TripsTabStack.Navigator>
       <TripsTabStack.Screen
         name="Profile"
-        component={ActivityScreen}
+        component={ProfileTabLandingScreen}
         options={{headerShown: false}}
       />
     </TripsTabStack.Navigator>
@@ -185,11 +186,11 @@ const AppNavigator = () => {
         component={AppDrawer}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="galleryScreen"
-        component={GalleryScreen}
-        options={{ headerShown: false }}
-      /> */}
+        component={ProfileTabLandingScreen}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

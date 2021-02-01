@@ -11,10 +11,9 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar barStyle="light-content" />
       <NavigationContainer
-      // ref={(navigatorRef) => {
-      //   NavigationService.setTopLevelNavigator(navigatorRef);
-      // }}
-      >
+        ref={(navigatorRef) => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}>
         <AppNavigator />
       </NavigationContainer>
     </SafeAreaProvider>
