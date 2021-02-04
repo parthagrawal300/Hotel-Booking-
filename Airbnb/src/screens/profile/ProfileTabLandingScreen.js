@@ -1,11 +1,21 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
 import Button from '../../components/ButtonComponent';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles/ProfileTabLandingScreenStyle';
 
-export default function ProfileTabLandingScreen() {
+export default function ProfileTabLandingScreen({navigation}) {
+  const navigationFunction = (screenName = '', data = {}) => {
+    navigation.navigate(screenName, data);
+  };
+
   const onSignUpClick = () => {
     alert('Sign Up Clicked');
   };
@@ -56,15 +66,14 @@ export default function ProfileTabLandingScreen() {
 
   const onSignIn = () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    navigationFunction('loginSignUpScreen');
+    setLoading(false);
   };
 
   const HEADING = 'Your Profile';
   const SUB_HEADER = 'Log in to start planning your next trip';
   return (
-    <View style={styles.root}>
+    <ScrollView contentContainerStyle={styles.root}>
       <View style={styles.main}>
         <Text style={styles.screenHeadingTextStyle}>{HEADING}</Text>
         <Text style={styles.screenSubHeaderTextStyle}>{SUB_HEADER}</Text>
@@ -78,18 +87,19 @@ export default function ProfileTabLandingScreen() {
           />
         </View>
         {flatListData.map(
-          ({text, icon, onClick, secondaryText, secondaryTextStyle}) => (
+          ({text, icon, onClick, secondaryText, secondaryTextStyle}, index) => (
             <ListItem
               text={text}
               onClick={onClick}
               icon={icon}
               secondaryText={secondaryText}
               secondaryTextStyle={secondaryTextStyle}
+              key={index}
             />
           ),
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

@@ -6,7 +6,7 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {isIos} from '../utils/index';
 // import LottieView from 'lottie-react-native';
 // import posed from 'react-native-pose';
@@ -15,13 +15,25 @@ import {isIos} from '../utils/index';
 
 export default function ButtonComponent(props) {
   // grab the props
-  const {text, style, onPress, disabled, customTextStyle, ...rest} = props;
+  const {
+    text,
+    style,
+    onPress,
+    disabled,
+    customTextStyle,
+    isButtonWithIcon,
+    icon,
+    color,
+    ...rest
+  } = props;
 
   const buttonStyle = {
-    borderRadius: 12,
-    justifyContent: 'center',
+    borderRadius: 8,
     alignItems: 'center',
     height: 46,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    justifyContent: isButtonWithIcon ? 'flex-start' : 'center',
     ...style,
   };
 
@@ -30,11 +42,10 @@ export default function ButtonComponent(props) {
   };
 
   const textStyle = {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    paddingTop: 14,
-    paddingBottom: 12,
-    paddingHorizontal: 16,
+    alignSelf: 'center',
+    color: 'white',
+    alignSelf: 'center',
+    alignItems: 'center',
     ...customTextStyle,
   };
 
@@ -45,7 +56,7 @@ export default function ButtonComponent(props) {
   //   };
 
   const disabledTextStyle = {
-    color: 'grey',
+    color: 'white',
   };
 
   //   const LoadingSpinnerWrapper = posed.View({
@@ -62,6 +73,7 @@ export default function ButtonComponent(props) {
         {...rest}
         onPress={onPress}
         disabled={disabled}>
+        {isButtonWithIcon && <Icon name={icon} size={24} color={color} />}
         {props.isLoading ? (
           //   <LoadingSpinnerWrapper pose={'connecting'} style={loaderWrapperStyle}>
           //     <LottieView source={loaderJson} autoPlay loop resizeMode="cover" />
@@ -76,6 +88,14 @@ export default function ButtonComponent(props) {
   return (
     <TouchableNativeFeedback onPress={onPress} disabled={disabled}>
       <View style={buttonStyle} {...rest}>
+        {isButtonWithIcon && (
+          <Icon
+            name={icon}
+            size={24}
+            style={{paddingVertical: 12}}
+            color={color}
+          />
+        )}
         {props.isLoading ? (
           //   <LoadingSpinnerWrapper pose={'connecting'} style={loaderWrapperStyle}>
           //     <LottieView source={loaderJson} autoPlay loop resizeMode="cover" />

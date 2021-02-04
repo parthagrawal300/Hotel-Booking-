@@ -11,10 +11,11 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {ProfileTabLandingScreen} from '../screens/profile/index';
+import {DEVICE_HEIGHT} from '../utils';
+import LoginAndSignUpScreen from '../screens/profile/LoginAndSignUpScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 const ExploreTabStack = createStackNavigator();
 const SavedTabStack = createStackNavigator();
 const TripsTabStack = createStackNavigator();
@@ -61,7 +62,7 @@ const TabNavigator = () => {
       tabBarOptions={{
         activeTintColor: 'black',
         labelStyle: {fontSize: 12},
-        style: {paddingTop: 8, paddingBottom: 20, height: 80},
+        style: {paddingVertical: 8, height: DEVICE_HEIGHT * 0.086},
       }}>
       <Tab.Screen
         name="Explore"
@@ -189,6 +190,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="galleryScreen"
         component={ProfileTabLandingScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="loginSignUpScreen"
+        component={LoginAndSignUpScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

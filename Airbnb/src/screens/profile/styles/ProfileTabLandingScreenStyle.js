@@ -4,8 +4,9 @@ import {SpacingGranularPresets, color, spacing} from '../../../theme/index';
 
 const styles = StyleSheet.create({
   root: {
-    // flex: 1,
+    flex: 1,
     alignItems: 'center',
+    backgroundColor: color.palette.warmWhite,
   },
 
   main: {

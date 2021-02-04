@@ -9,7 +9,7 @@ import NavigationService from './navigation/NavigationServicies';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <NavigationContainer
         ref={(navigatorRef) => {
           NavigationService.setTopLevelNavigator(navigatorRef);
