@@ -13,6 +13,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {ProfileTabLandingScreen} from '../screens/profile/index';
 import {DEVICE_HEIGHT} from '../utils';
 import LoginAndSignUpScreen from '../screens/profile/LoginAndSignUpScreen';
+import {ICONS} from '../assets/icons/icon';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -77,28 +78,26 @@ const TabNavigator = () => {
           ),
         }}
       />
-
       <Tab.Screen
         name="Saved"
         component={JourneyTab}
         options={{
           tabBarIcon: ({focused}) => (
             <FontAwesome
-              name="heart-o"
+              name={ICONS.LIKE}
               size={25}
               color={focused ? 'red' : 'grey'}
             />
           ),
         }}
       />
-
       <Tab.Screen
         name="Trips"
         component={CameraTab}
         options={{
           tabBarIcon: ({focused}) => (
             <FontAwesome5
-              name="airbnb"
+              name={ICONS.AIRBNB}
               size={25}
               color={focused ? 'red' : 'grey'}
             />
@@ -111,7 +110,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <Feather
-              name="message-square"
+              name={ICONS.INBOX}
               size={25}
               color={focused ? 'red' : 'grey'}
             />
@@ -123,7 +122,11 @@ const TabNavigator = () => {
         component={GalleryTab}
         options={{
           tabBarIcon: ({focused}) => (
-            <EvilIcons name="user" size={35} color={focused ? 'red' : 'grey'} />
+            <EvilIcons
+              name={ICONS.USER}
+              size={35}
+              color={focused ? 'red' : 'grey'}
+            />
           ),
         }}
       />

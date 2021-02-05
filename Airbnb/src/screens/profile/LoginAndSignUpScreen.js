@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, View} from 'react-native';
+
 import HeaderComponent from '../../components/HeaderComponent';
 import Button from '../../components/ButtonComponent';
+import {buttonDetails} from './utils';
+
 import styles from './styles/LoginAndSignUpScreenStyle';
+import {ICONS} from '../../assets/icons/icon';
 
 export default function LoginAndSignUpScreen({navigation}) {
   const goBackClicked = () => {
@@ -12,110 +16,52 @@ export default function LoginAndSignUpScreen({navigation}) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [focus, setFocus] = useState('');
 
-  const buttonDetails = [
-    {
-      text: 'Continue with Email',
-      icon: 'envelope',
-      color: 'black',
-    },
-    {
-      text: 'Continue with Facebook',
-      icon: 'facebook',
-      color: 'blue',
-    },
-    {
-      text: 'Continue with Google',
-      icon: 'google',
-      color: 'red',
-    },
-    {
-      text: 'Continue with Apple',
-      icon: 'apple',
-      color: 'black',
-    },
-  ];
-
-  const labelStyle = {
-    position: 'absolute',
-    left: 0,
-    top: 68,
-    marginHorizontal: 12,
-    fontSize: 14,
-    color: '#000',
-  };
-
   const DISABLE_BUTTON = phoneNumber.length ? false : true;
   return (
     <View style={styles.root}>
-      <HeaderComponent onGoBack={() => goBackClicked()} icon="times" />
+      <HeaderComponent onGoBack={() => goBackClicked()} icon={ICONS.CROSS} />
       <View style={styles.main}>
-        <Text style={{fontSize: 24, fontWeight: '500', marginBottom: 16}}>
-          Log in or sign up to Airbnb
-        </Text>
+        <Text style={styles.headerTextStyle}>Log in or sign up to Airbnb</Text>
         <View>
           <View style={{paddingVertical: 12}}>
-            <View
-              style={{
-                height: 56,
-                borderColor: 'gray',
-                borderWidth: 1,
-                borderRadius: 8,
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
-              }}></View>
-
-            {focus ? <Text style={labelStyle}>Phone Number</Text> : null}
+            <View style={styles.phoneCodeContainerStyle}></View>
+            {focus ? (
+              <Text style={styles.topPlaceholderStyle}>Phone Number</Text>
+            ) : null}
             <TextInput
-              style={{
-                height: 56,
-                borderColor: 'gray',
-                borderWidth: 1,
-                borderRadius: 8,
-                paddingHorizontal: 12,
-                fontSize: 20,
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
-              }}
-              onChangeText={(text) => setPhoneNumber(text)}
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
-              value={phoneNumber}
-              placeholder={!focus ? 'Phone Number' : ''}
               blurOnSubmit
               keyboardType="numeric"
+              onBlur={() => setFocus(false)}
+              onChangeText={(text) => setPhoneNumber(text)}
+              onFocus={() => setFocus(true)}
+              placeholder={!focus ? 'Phone Number' : ''}
+              style={styles.phoneNumberInputStyle}
+              value={phoneNumber}
             />
           </View>
-
           <Button
-            text="Continue"
-            style={styles.loginButtonStyle}
             customTextStyle={styles.buttonTextStyle}
             disabled={DISABLE_BUTTON}
+            style={styles.loginButtonStyle}
+            text="Continue"
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingVertical: 8,
-          }}>
-          <View style={{height: 1, width: '42%', backgroundColor: 'gray'}} />
-          <Text style={{paddingHorizontal: '5%', alignSelf: 'baseline'}}>
-            or
-          </Text>
-          <View style={{height: 1, width: '42%', backgroundColor: 'gray'}} />
+        <View style={styles.orLineStyle}>
+          <View style={styles.orBorderLineStyle} />
+          <Text style={styles.orTextStyle}>or</Text>
+          <View style={styles.orBorderLineStyle} />
         </View>
         {buttonDetails.map(({text, icon, color}) => (
-          <View style={{paddingVertical: 8}}>
+          <View style={styles.buttonContainerStyle}>
             <Button
-              text={text}
-              isButtonWithIcon
-              icon={icon}
               color={color}
-              // onPress={onSignIn}
-              // isLoading={isLoading}
-              style={styles.socialLoginButtonStyle}
               customTextStyle={styles.socialLoginButtonTextStyle}
+              icon={icon}
+              isButtonWithIcon
+              // isLoading={isLoading}
+              // onPress={onSignIn}
+              style={styles.socialLoginButtonStyle}
+              text={text}
             />
           </View>
         ))}

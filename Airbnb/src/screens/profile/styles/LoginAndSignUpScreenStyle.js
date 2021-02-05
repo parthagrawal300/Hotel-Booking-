@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     letterSpacing: 0.5,
-    textAlign: 'left',
     marginLeft: 58,
+    textAlign: 'left',
   },
 
   loginButtonContainerStyle: {
-    width: DEVICE_WIDTH - 2 * SpacingGranularPresets.mediumPlus, // device width - 2* padding horizontal of parent
     alignSelf: 'center',
     paddingTop: SpacingGranularPresets.large,
+    width: DEVICE_WIDTH - 2 * SpacingGranularPresets.mediumPlus, // device width - 2* padding horizontal of parent
   },
 
   loginButtonStyle: {
@@ -47,6 +47,62 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     letterSpacing: 0.5,
+  },
+
+  phoneCodeContainerStyle: {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderColor: 'gray',
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 56,
+  },
+
+  phoneNumberInputStyle: {
+    borderColor: 'gray',
+    borderRadius: 8,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderWidth: 1,
+    fontSize: 20,
+    height: 56,
+    paddingHorizontal: 12,
+  },
+
+  orLineStyle: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingVertical: 8,
+  },
+
+  orBorderLineStyle: {
+    backgroundColor: 'gray',
+    height: 1,
+    width: '42%',
+  },
+
+  orTextStyle: {
+    alignSelf: 'baseline',
+    paddingHorizontal: '5%',
+  },
+
+  headerTextStyle: {
+    fontSize: 24,
+    fontWeight: '500',
+    marginBottom: 16,
+  },
+
+  buttonContainerStyle: {
+    paddingVertical: 8,
+  },
+
+  topPlaceholderStyle: {
+    color: '#000',
+    fontSize: 14,
+    left: 0,
+    marginHorizontal: 12,
+    position: 'absolute',
+    top: 68,
   },
 });
 
