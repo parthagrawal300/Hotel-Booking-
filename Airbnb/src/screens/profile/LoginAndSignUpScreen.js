@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 import HeaderComponent from '../../components/HeaderComponent';
 import Button from '../../components/ButtonComponent';
@@ -7,6 +7,7 @@ import {buttonDetails} from './utils';
 
 import styles from './styles/LoginAndSignUpScreenStyle';
 import {ICONS} from '../../assets/icons/icon';
+import PhoneNumberModal from './components/PhoneNumberModal';
 
 export default function LoginAndSignUpScreen({navigation}) {
   const goBackClicked = () => {
@@ -14,7 +15,24 @@ export default function LoginAndSignUpScreen({navigation}) {
   };
 
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('91');
+  const [countryCodeText, setCountryCodeText] = useState('India (+91)');
+  const [isModalOpen, setModalState] = useState(false);
   const [focus, setFocus] = useState('');
+
+  const closeModal = () => {
+    setModalState(false);
+  };
+
+  const onPhoneCountryCodeClicked = (
+    countryPhoneCode = '',
+    countryCodeText = '',
+  ) => {
+    setCountryCodeText(countryCodeText);
+    setCountryCode(countryPhoneCode);
+
+    closeModal();
+  };
 
   const DISABLE_BUTTON = phoneNumber.length ? false : true;
   return (
@@ -24,7 +42,14 @@ export default function LoginAndSignUpScreen({navigation}) {
         <Text style={styles.headerTextStyle}>Log in or sign up to Airbnb</Text>
         <View>
           <View style={{paddingVertical: 12}}>
-            <View style={styles.phoneCodeContainerStyle}></View>
+            <TouchableOpacity
+              onPress={() => setModalState(true)}
+              style={styles.phoneCodeContainerStyle}>
+              <Text style={[styles.topPlaceholderStyle, {top: 0}]}>
+                Country/Region
+              </Text>
+              <Text style={styles.countryCodeTextStyle}>{countryCodeText}</Text>
+            </TouchableOpacity>
             {focus ? (
               <Text style={styles.topPlaceholderStyle}>Phone Number</Text>
             ) : null}
@@ -66,6 +91,11 @@ export default function LoginAndSignUpScreen({navigation}) {
           </View>
         ))}
       </View>
+      <PhoneNumberModal
+        isVisible={isModalOpen}
+        closeModal={closeModal}
+        onPhoneCountryCodeClicked={onPhoneCountryCodeClicked}
+      />
     </View>
   );
 }

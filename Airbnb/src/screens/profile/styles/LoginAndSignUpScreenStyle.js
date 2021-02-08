@@ -97,12 +97,19 @@ const styles = StyleSheet.create({
   },
 
   topPlaceholderStyle: {
-    color: '#000',
+    color: color.palette.grey7,
     fontSize: 14,
     left: 0,
     marginHorizontal: 12,
     position: 'absolute',
     top: 68,
+  },
+
+  countryCodeTextStyle: {
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    fontSize: 20,
+    color: color.palette.grey11,
   },
 });
 

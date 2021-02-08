@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, SafeAreaView} from 'react-native';
+import {View, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
