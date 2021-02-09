@@ -5,8 +5,8 @@ import HeaderComponent from '../../components/HeaderComponent';
 import Button from '../../components/ButtonComponent';
 import {buttonDetails} from './utils';
 
-import {ICONS} from '../../assets/icons/icon';
 import PhoneNumberModal from './components/PhoneNumberModal';
+import {ICONS} from '../../assets/icons/icon';
 
 import styles from './styles/LoginAndSignUpScreenStyle';
 
