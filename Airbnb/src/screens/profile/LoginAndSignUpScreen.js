@@ -13,7 +13,7 @@ export default function LoginAndSignUpScreen({navigation}) {
   const goBackClicked = () => {
     navigation.goBack();
   };
-
+  //checkinng to push
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('91');
   const [countryCodeText, setCountryCodeText] = useState('India (+91)');
