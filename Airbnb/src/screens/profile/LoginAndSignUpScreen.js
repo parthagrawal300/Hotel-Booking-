@@ -5,16 +5,16 @@ import HeaderComponent from '../../components/HeaderComponent';
 import Button from '../../components/ButtonComponent';
 import {buttonDetails} from './utils';
 
-import styles from './styles/LoginAndSignUpScreenStyle';
 import {ICONS} from '../../assets/icons/icon';
 import PhoneNumberModal from './components/PhoneNumberModal';
+
+import styles from './styles/LoginAndSignUpScreenStyle';
 
 export default function LoginAndSignUpScreen({navigation}) {
   const goBackClicked = () => {
     navigation.goBack();
   };
-  //checking to push
-  console.log('1');
+
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('91');
   const [countryCodeText, setCountryCodeText] = useState('India (+91)');
